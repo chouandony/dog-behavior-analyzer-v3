@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
-interface Record {
+interface TrackerRecord {
   date: string
   count: number
   intensity: number
@@ -11,10 +11,9 @@ interface Record {
 }
 
 interface Props {
-  records: Record[]
+  records: TrackerRecord[]
   title: string
 }
-
 export default function ProgressChart({ records, title }: Props) {
   const data = useMemo(() => {
     const grouped: Record<string, { count: number; intensity: number; recovery: number; n: number }> = {}
