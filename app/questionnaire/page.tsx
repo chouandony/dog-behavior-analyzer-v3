@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowRight, ArrowLeft, Home, Check, RotateCcw } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Home, Check, AlertCircle } from 'lucide-react'
 import { questionnaireSections } from '@/data/questionnaire'
 import { calculateScores, saveAssessment } from '@/data/scoring'
 import StepIndicator from '@/components/StepIndicator'
@@ -13,7 +13,7 @@ export default function QuestionnairePage() {
   const router = useRouter()
   const [currentSection, setCurrentSection] = useState(0)
   const [answers, setAnswers] = useState<Record<number, number>>({})
-  const [direction, setDirection] = useState<'next' | 'prev'>('next')
+  const [showWarning, setShowWarning] = useState(false)
 
   const section = questionnaireSections[currentSection]
   const totalSections = questionnaireSections.length
@@ -21,11 +21,34 @@ export default function QuestionnairePage() {
 
   const setAnswer = useCallback((questionId: number, value: number) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }))
+    // 作答後隱藏警告
+    setShowWarning(false)
   }, [])
 
+  // 檢查當前頁面是否全部作答
+  const unansweredIds = section.questions
+    .filter(q => answers[q.id] === undefined)
+    .map(q => q.id)
+  const allAnswered = unansweredIds.length === 0
+
   const nextSection = () => {
+    if (!allAnswered) {
+      setShowWarning(true)
+      // 滾動到第一個未作答的題目
+      const firstUnanswered = section.questions.find(q => answers[q.id] === undefined)
+      if (firstUnanswered) {
+        const el = document.getElementById(`q-${firstUnanswered.id}`)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          el.classList.add('ring-2', 'ring-warm-400', 'ring-offset-2')
+          setTimeout(() => el.classList.remove('ring-2', 'ring-warm-400', 'ring-offset-2'), 2000)
+        }
+      }
+      return
+    }
+
     if (currentSection < totalSections - 1) {
-      setDirection('next')
+      setShowWarning(false)
       setCurrentSection(s => s + 1)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else {
@@ -38,14 +61,13 @@ export default function QuestionnairePage() {
 
   const prevSection = () => {
     if (currentSection > 0) {
-      setDirection('prev')
+      setShowWarning(false)
       setCurrentSection(s => s - 1)
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   const sectionProgress = section.questions.filter(q => answers[q.id] !== undefined).length
-  const sectionAnsweredAll = sectionProgress === section.questions.length
 
   return (
     <div className="space-y-6">
@@ -65,6 +87,9 @@ export default function QuestionnairePage() {
           className="bg-warm-500 h-full rounded-full transition-all duration-500"
           style={{ width: `${progress}%` }}
         />
+      </div>
+      <div className="text-xs text-earth-400 text-center">
+        已作答 {sectionProgress} / {section.questions.length} 題
       </div>
 
       {/* 區段標題 */}
@@ -99,18 +124,41 @@ export default function QuestionnairePage() {
         </div>
       </div>
 
+      {/* 警告區塊 */}
+      {showWarning && (
+        <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 flex items-start gap-3 animate-fade-in-up">
+          <AlertCircle size={20} className="text-red-500 shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-bold text-red-600">請完成本頁所有題目</p>
+            <p className="text-xs text-red-500 mt-0.5">
+              尚有 {unansweredIds.length} 題未作答（題號: {unansweredIds.join(', ')}）
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* 題目列表 */}
       <div className="space-y-4">
         {section.questions.map((q, idx) => {
           const currentVal = answers[q.id]
+          const isUnanswered = currentVal === undefined
           return (
             <div 
               key={q.id} 
-              className="bg-white rounded-xl border border-earth-200 p-4 space-y-3 animate-fade-in-up"
+              id={`q-${q.id}`}
+              className={`bg-white rounded-xl border p-4 space-y-3 animate-fade-in-up transition-all ${
+                isUnanswered && showWarning 
+                  ? 'border-red-300 shadow-sm' 
+                  : 'border-earth-200'
+              }`}
               style={{ animationDelay: `${idx * 0.03}s`, animationFillMode: 'both' }}
             >
               <div className="flex items-start gap-3">
-                <span className="shrink-0 w-7 h-7 rounded-full bg-cream border border-earth-200 flex items-center justify-center text-xs font-bold text-earth-500">
+                <span className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center text-xs font-bold transition-colors ${
+                  isUnanswered && showWarning
+                    ? 'bg-red-50 border-red-300 text-red-500'
+                    : 'bg-cream border-earth-200 text-earth-500'
+                }`}>
                   {q.id}
                 </span>
                 <p className="text-sm text-earth-500 font-medium leading-relaxed pt-0.5">{q.text}</p>
