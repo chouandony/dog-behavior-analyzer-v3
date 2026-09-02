@@ -43,7 +43,7 @@ export default function HomePage() {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <Sparkles size={16} className="text-warm-500" />
-              <span className="text-xs font-bold text-warm-600 tracking-wide">專業狗狗行為分析 2.0</span>
+              <span className="text-xs font-bold text-warm-600 tracking-wide">專業狗狗行為分析 3.0</span>
             </div>
             <h1 className="text-2xl font-black text-earth-600 leading-tight">
               狗狗行為分析
