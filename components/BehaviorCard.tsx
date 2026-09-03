@@ -1,76 +1,79 @@
-'use client'
+"use client";
 
-import { cn } from '@/lib/utils'
-import type { Behavior } from '@/data/behaviors'
+import { CheckCircle2 } from "lucide-react";
+import { type Behavior } from "@/data/behaviors";
 
-interface Props {
-  behavior: Behavior
-  selected: boolean
-  onToggle: () => void
+interface BehaviorCardProps {
+  behavior: Behavior;
+  selected: boolean;
+  onToggle: () => void;
 }
 
-const dangerColors = {
-  low: 'border-green-200 hover:border-green-300',
-  medium: 'border-yellow-200 hover:border-yellow-300',
-  high: 'border-red-200 hover:border-red-300',
-}
+export default function BehaviorCard({
+  behavior,
+  selected,
+  onToggle,
+}: BehaviorCardProps) {
+  const dangerColors = {
+    low: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    medium: "border-amber-200 bg-amber-50 text-amber-700",
+    high: "border-red-200 bg-red-50 text-red-700",
+  };
 
-const dangerBadgeColors = {
-  low: 'bg-green-50 text-green-600',
-  medium: 'bg-yellow-50 text-yellow-600',
-  high: 'bg-red-50 text-red-600',
-}
-
-export default function BehaviorCard({ behavior, selected, onToggle }: Props) {
   return (
     <button
       onClick={onToggle}
-      className={cn(
-        'w-full text-left p-4 rounded-xl border-2 transition-all card-hover bg-white',
+      className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 card-hover ${
         selected
-          ? 'border-warm-400 bg-warm-50 shadow-md'
-          : dangerColors[behavior.dangerLevel]
-      )}
+          ? "border-orange-400 bg-orange-50 shadow-md"
+          : "border-slate-200 bg-white hover:border-orange-200"
+      }`}
     >
       <div className="flex items-start gap-3">
-        <span className="text-2xl shrink-0">{behavior.emoji}</span>
+        <div className="shrink-0 text-3xl">{behavior.emoji}</div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className={cn(
-              'font-bold text-sm',
-              selected ? 'text-warm-700' : 'text-earth-500'
-            )}>
+          <div className="flex items-center gap-2">
+            <h3
+              className={`font-bold ${
+                selected ? "text-orange-700" : "text-slate-700"
+              }`}
+            >
               {behavior.name}
             </h3>
-            <span className={cn(
-              'text-[10px] px-1.5 py-0.5 rounded-full font-medium',
-              dangerBadgeColors[behavior.dangerLevel]
-            )}>
-              {behavior.dangerLevel === 'high' ? '高危' : behavior.dangerLevel === 'medium' ? '中危' : '低危'}
+            <span
+              className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${dangerColors[behavior.dangerLevel]}`}
+            >
+              {behavior.dangerLevel === "low"
+                ? "低風險"
+                : behavior.dangerLevel === "medium"
+                ? "中風險"
+                : "高風險"}
             </span>
           </div>
-          <p className="text-xs text-earth-400 mt-1 leading-relaxed">{behavior.description}</p>
+          <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+            {behavior.description}
+          </p>
           <div className="flex flex-wrap gap-1 mt-2">
-            {behavior.commonCauses.slice(0, 3).map(cause => (
-              <span key={cause} className="text-[10px] px-1.5 py-0.5 rounded bg-cream text-earth-400 border border-earth-200">
+            {behavior.commonCauses.slice(0, 3).map((cause) => (
+              <span
+                key={cause}
+                className="text-[10px] text-slate-400 bg-slate-50 px-2 py-0.5 rounded-full border border-slate-200"
+              >
                 {cause}
               </span>
             ))}
           </div>
         </div>
-        <div className={cn(
-          'w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5',
-          selected
-            ? 'bg-warm-500 border-warm-500'
-            : 'border-earth-300'
-        )}>
-          {selected && (
-            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
+        <div className="shrink-0">
+          {selected ? (
+            <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center">
+              <CheckCircle2 size={16} className="text-white" />
+            </div>
+          ) : (
+            <div className="w-6 h-6 rounded-full border-2 border-slate-300" />
           )}
         </div>
       </div>
     </button>
-  )
+  );
 }
