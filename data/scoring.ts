@@ -45,7 +45,6 @@ function getSeverity(average: number, dangerLevel: string): { severity: SectionS
   if (average >= mod) return { severity: 'moderate', label: '中度' }
   return { severity: 'low', label: '輕度' }
 }
-import { questionnaireSections } from './questionnaire'
 
 export function getUnansweredInSection(
   answers: Record<number, number>,
