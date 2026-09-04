@@ -32,13 +32,14 @@ const consequenceOptions = [
 function ABCForm() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const preselected = searchParams.get('behaviors')?.split(',').filter(Boolean) || []
+  const preselected = searchParams.get('behaviors')?.split(',').filter(Boolean)[0] || null
 
-  const [selectedBehaviors, setSelectedBehaviors] = useState<string[]>(preselected)
+  // 改為單選：string | null
+  const [selectedBehavior, setSelectedBehavior] = useState<string | null>(preselected)
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState({ a: '', b: '', c: '', functionId: '' })
 
-  const behaviorList = behaviors.filter(b => selectedBehaviors.includes(b.id))
+  const behaviorList = behaviors.filter(b => b.id === selectedBehavior)
   const steps = ['選擇行為', '前事 (A)', '行為 (B)', '後果 (C)', '確認']
 
   const nextStep = () => setStep(s => Math.min(s + 1, 4))
@@ -46,7 +47,7 @@ function ABCForm() {
 
   const submit = () => {
     const params = new URLSearchParams()
-    if (selectedBehaviors.length) params.set('behaviors', selectedBehaviors.join(','))
+    if (selectedBehavior) params.set('behaviors', selectedBehavior)
     if (answers.a) params.set('a', answers.a)
     if (answers.b) params.set('b', answers.b)
     if (answers.c) params.set('c', answers.c)
@@ -54,7 +55,8 @@ function ABCForm() {
     router.push(`/result/?${params.toString()}`)
   }
 
-  const canProceed = step === 0 ? selectedBehaviors.length > 0 : true
+  // 單選防呆：必須選一個才能下一步
+  const canProceed = step === 0 ? selectedBehavior !== null : true
 
   return (
     <div className="space-y-6">
@@ -66,18 +68,25 @@ function ABCForm() {
           <div className="flex justify-center py-2">
             <BorderCollieSVG size={80} pose="pointing" />
           </div>
-          <p className="text-sm text-earth-400">請選擇一個或多個您想了解的問題行為</p>
+          <p className="text-sm text-earth-400">請選擇一個您想了解的問題行為</p>
           <div className="grid gap-2">
             {behaviors.map(b => (
-              <label key={b.id} className="flex items-center gap-3 p-3 bg-white rounded-lg border border-earth-200 cursor-pointer hover:border-warm-300 transition-colors">
-                <input
-                  type="checkbox"
-                  className="w-5 h-5 accent-warm-500 shrink-0"
-                  checked={selectedBehaviors.includes(b.id)}
-                  onChange={() => setSelectedBehaviors(prev =>
-                    prev.includes(b.id) ? prev.filter(x => x !== b.id) : [...prev, b.id]
-                  )}
-                />
+              <label
+                key={b.id}
+                className={`flex items-center gap-3 p-3 bg-white rounded-lg border cursor-pointer transition-colors ${
+                  selectedBehavior === b.id
+                    ? 'border-warm-400 bg-warm-50'
+                    : 'border-earth-200 hover:border-warm-300'
+                }`}
+                onClick={() => setSelectedBehavior(b.id)}
+              >
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
+                  selectedBehavior === b.id
+                    ? 'border-warm-500 bg-warm-500'
+                    : 'border-earth-300'
+                }`}>
+                  {selectedBehavior === b.id && <div className="w-2 h-2 rounded-full bg-white" />}
+                </div>
                 <span className="text-xl shrink-0">{b.emoji}</span>
                 <span className="text-sm font-medium text-earth-500">{b.name}</span>
               </label>
@@ -149,7 +158,7 @@ function ABCForm() {
           <div className="bg-white rounded-xl border border-earth-200 p-4 space-y-3">
             <div>
               <span className="text-xs text-earth-400">行為問題</span>
-              <p className="font-medium text-earth-500">{behaviorList.map(b => b.name).join('、') || '未選擇'}</p>
+              <p className="font-medium text-earth-500">{behaviorList[0]?.name || '未選擇'}</p>
             </div>
             <div className="grid grid-cols-3 gap-2 text-sm">
               <div className="bg-cream p-2 rounded-lg">
