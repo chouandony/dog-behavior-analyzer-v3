@@ -11,6 +11,8 @@ import {
   ClipboardCheck,
   BarChart3,
   Sparkles,
+  Search,
+  ArrowRight,
 } from "lucide-react";
 import { calculateScores, getSeverityBadgeColor } from "@/data/scoring";
 import type { AssessmentResult } from "@/data/scoring";
@@ -24,6 +26,8 @@ const riskConfig = {
     border: "border-emerald-200",
     text: "text-emerald-700",
     badge: "bg-emerald-500",
+    barFrom: "from-emerald-400",
+    barTo: "to-emerald-500",
   },
   moderate: {
     label: "整體風險中度",
@@ -32,6 +36,8 @@ const riskConfig = {
     border: "border-yellow-200",
     text: "text-yellow-700",
     badge: "bg-yellow-500",
+    barFrom: "from-yellow-400",
+    barTo: "to-yellow-500",
   },
   high: {
     label: "整體風險高度",
@@ -40,6 +46,8 @@ const riskConfig = {
     border: "border-orange-200",
     text: "text-orange-700",
     badge: "bg-orange-500",
+    barFrom: "from-orange-400",
+    barTo: "to-orange-500",
   },
   severe: {
     label: "整體風險嚴重",
@@ -48,6 +56,8 @@ const riskConfig = {
     border: "border-red-200",
     text: "text-red-700",
     badge: "bg-red-500",
+    barFrom: "from-red-400",
+    barTo: "to-red-500",
   },
 };
 
@@ -82,9 +92,11 @@ export default function QuestionnaireResultPage() {
   }
 
   const risk = riskConfig[result.overallRisk];
+  const concernIds = result.topConcerns.map((b) => b.behaviorId).join(",");
+  const concernCount = result.topConcerns.length;
 
   return (
-    <div className="space-y-5 pb-24">
+    <div className="space-y-5 pb-32">
       {/* 頂部標題 */}
       <div className="relative bg-gradient-to-br from-orange-50 via-white to-emerald-50 rounded-3xl border-2 border-orange-100 p-6 overflow-hidden">
         <div className="flex items-center gap-4">
@@ -108,28 +120,61 @@ export default function QuestionnaireResultPage() {
         </div>
       </div>
 
-      {/* 整體風險卡片 */}
+      {/* 整體風險指數卡片（與貓版一致） */}
       <div className={`rounded-2xl border-2 p-5 ${risk.bg} ${risk.border}`}>
-        <div className="flex items-center gap-3 mb-3">
-          <div className={`w-10 h-10 rounded-full ${risk.badge} flex items-center justify-center text-white shadow-md`}>
-            <BarChart3 size={20} />
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <div className={`w-10 h-10 rounded-full ${risk.badge} flex items-center justify-center text-white shadow-md`}>
+              <BarChart3 size={20} />
+            </div>
+            <div>
+              <h2 className={`font-black text-lg ${risk.text}`}>{risk.label}</h2>
+            </div>
           </div>
-          <div>
-            <h2 className={`font-black text-lg ${risk.text}`}>{risk.label}</h2>
-            <p className={`text-xs ${risk.text} opacity-80`}>{risk.desc}</p>
+          <span className={`text-xs font-bold px-3 py-1 rounded-full bg-white/80 ${risk.text} border ${risk.border}`}>
+            {riskConfig[result.overallRisk].label.replace("整體風險", "")}
+          </span>
+        </div>
+
+        {/* 風險進度條 */}
+        <div className="mb-3">
+          <div className="h-3 bg-white/60 rounded-full overflow-hidden border border-slate-100">
+            <div
+              className={`h-full rounded-full bg-gradient-to-r ${risk.barFrom} ${risk.barTo} transition-all duration-1000`}
+              style={{
+                width: `${(() => {
+                  const maxAvg =
+                    result.behaviorScores.length > 0
+                      ? Math.max(...result.behaviorScores.map((b) => b.average))
+                      : 0;
+                  return Math.min((maxAvg / 5) * 100, 100);
+                })()}%`,
+              }}
+            />
+          </div>
+          <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+            <span>0</span>
+            <span>50</span>
+            <span>100</span>
           </div>
         </div>
+
+        <p className={`text-xs ${risk.text} opacity-80 leading-relaxed`}>
+          {risk.desc}
+        </p>
       </div>
 
-      {/* 前三大關注點 */}
-      {result.topConcerns.length > 0 && (
+      {/* 需要關注的行為 */}
+      {concernCount > 0 && (
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <AlertTriangle size={18} className="text-orange-500" />
-            <h2 className="font-bold text-slate-800">優先關注行為</h2>
+            <h2 className="font-bold text-slate-800">
+              需要關注的行為（{concernCount} 項）
+            </h2>
           </div>
-          <div className="space-y-2">
-            {result.topConcerns.map((b, idx) => (
+          <div className="space-y-3">
+            {result.topConcerns.map((b) => (
               <div
                 key={b.behaviorId}
                 className="bg-white rounded-xl border-2 border-slate-200 p-4 hover:border-orange-200 transition-colors"
@@ -147,13 +192,37 @@ export default function QuestionnaireResultPage() {
                     {b.severityLabel} · {b.average}分
                   </span>
                 </div>
-                <div className="space-y-1">
-                  {b.recommendations.map((rec, i) => (
-                    <div key={i} className="flex items-start gap-1.5 text-xs text-slate-600">
-                      <Sparkles size={12} className="text-orange-400 shrink-0 mt-0.5" />
-                      <span>{rec}</span>
-                    </div>
-                  ))}
+
+                {/* 得分進度條 */}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full ${getSeverityBadgeColor(b.severity)}`}
+                      style={{ width: `${Math.min((b.average / 5) * 100, 100)}%` }}
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-slate-500 w-12 text-right">
+                    {b.average} / 5
+                  </span>
+                </div>
+
+                {/* 建議 + ABC 分析按鈕 */}
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1 space-y-1">
+                    {b.recommendations.map((rec, i) => (
+                      <div key={i} className="flex items-start gap-1.5 text-xs text-slate-600">
+                        <Sparkles size={12} className="text-orange-400 shrink-0 mt-0.5" />
+                        <span>{rec}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/abc/?behaviors=${b.behaviorId}`}
+                    className="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full bg-orange-50 text-orange-600 text-xs font-bold border border-orange-200 hover:bg-orange-100 transition-colors"
+                  >
+                    <Search size={12} />
+                    ABC 分析
+                  </Link>
                 </div>
               </div>
             ))}
@@ -161,10 +230,39 @@ export default function QuestionnaireResultPage() {
         </div>
       )}
 
+      {/* 正常範圍的行為 */}
+      {result.behaviorScores.filter((b) => b.severity === "low").length > 0 && (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 size={18} className="text-emerald-500" />
+            <h2 className="font-bold text-slate-800">
+              正常範圍的行為（{result.behaviorScores.filter((b) => b.severity === "low").length} 項）
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {result.behaviorScores
+              .filter((b) => b.severity === "low")
+              .map((b) => (
+                <div
+                  key={b.behaviorId}
+                  className="bg-white rounded-xl border border-slate-200 p-3 flex items-center gap-2"
+                >
+                  <span className="text-lg">{b.emoji}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs font-bold text-slate-700 truncate">{b.behaviorName}</div>
+                    <div className="text-[10px] text-slate-400">{b.average} / 5</div>
+                  </div>
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
+
       {/* 各維度分數 */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <BarChart3 size={18} className="text-emerald-500" />
+          <BarChart3 size={18} className="text-blue-500" />
           <h2 className="font-bold text-slate-800">各維度分數</h2>
         </div>
         <div className="space-y-2">
@@ -206,10 +304,10 @@ export default function QuestionnaireResultPage() {
         </div>
       </div>
 
-      {/* 所有行為分數 */}
+      {/* 全部行為維度 */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <CheckCircle2 size={18} className="text-blue-500" />
+          <CheckCircle2 size={18} className="text-purple-500" />
           <h2 className="font-bold text-slate-800">全部行為維度</h2>
         </div>
         <div className="grid grid-cols-2 gap-2">
@@ -232,9 +330,21 @@ export default function QuestionnaireResultPage() {
         </div>
       </div>
 
-      {/* 底部按鈕 */}
-      <div className="fixed bottom-16 left-0 right-0 px-4 z-[60]">
-        <div className="max-w-2xl mx-auto flex gap-3">
+      {/* 底部操作區 */}
+      <div className="space-y-3 pt-2">
+        {/* 對全部關注行為進行 ABC+E 分析（與貓版一致） */}
+        {concernCount > 0 && (
+          <Link
+            href={`/abc/?behaviors=${concernIds}`}
+            className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-orange-200 transition-all active:scale-[0.98] animate-fade-in-up"
+          >
+            <Sparkles size={18} />
+            <span>對全部關注行為進行 ABC+E 分析</span>
+            <ArrowRight size={18} />
+          </Link>
+        )}
+
+        <div className="flex gap-3">
           <Link
             href="/questionnaire/"
             className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-slate-200 text-slate-600 font-bold py-3 rounded-xl hover:border-orange-300 hover:text-orange-600 transition-all active:scale-[0.98]"
@@ -249,12 +359,20 @@ export default function QuestionnaireResultPage() {
               localStorage.removeItem("dog-questionnaire-progress");
               router.push("/questionnaire/");
             }}
-            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-orange-200 transition-all active:scale-[0.98]"
+            className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-slate-200 text-slate-600 font-bold py-3 rounded-xl hover:border-orange-300 hover:text-orange-600 transition-all active:scale-[0.98]"
           >
             <RotateCcw size={18} />
             重新評估
           </button>
         </div>
+
+        <Link
+          href="/"
+          className="flex items-center justify-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition-colors py-2"
+        >
+          <ArrowLeft size={14} />
+          返回首頁
+        </Link>
       </div>
     </div>
   );
