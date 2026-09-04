@@ -189,3 +189,17 @@ export const allQuestions = questionnaireSections.flatMap(s => s.questions)
 export function getQuestionsByBehavior(behaviorId: string): Question[] {
   return allQuestions.filter(q => q.behaviorMapping.includes(behaviorId))
 }
+
+// 相容層：讓 page.tsx 可以使用 sections 與 scoreLabels
+export const sections = questionnaireSections;
+
+// 通用標籤（0=未觀察到，1-5=頻率等級）
+// 注意：不同區塊的 scaleLabels 不同，這裡使用最通用的版本
+export const scoreLabels: Record<number, string> = {
+  0: "未觀察到",
+  1: "從不",
+  2: "鮮少",
+  3: "有時",
+  4: "經常",
+  5: "總是",
+};
