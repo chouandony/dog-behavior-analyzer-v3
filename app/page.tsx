@@ -161,7 +161,7 @@ export default function HomePage() {
       </div>
 
       {/* 底部浮動按鈕 */}
-      <div className="fixed bottom-6 left-0 right-0 px-4 z-40">
+      <div className="fixed bottom-16 left-0 right-0 px-4 z-[60]">
         <div className="max-w-2xl mx-auto">
           {selected ? (
             <Link
@@ -185,7 +185,7 @@ export default function HomePage() {
       </div>
 
       {/* 功能入口 */}
-      <div className="pt-4 pb-24">
+      <div className="pt-4 pb-32">
         <div className="flex items-center gap-2 mb-3">
           <BorderCollieSVG size={32} pose="sitting" />
           <h2 className="text-sm font-bold text-slate-700">更多工具</h2>
@@ -239,7 +239,7 @@ export default function HomePage() {
       </div>
 
       {/* 底部裝飾 */}
-      <div className="flex justify-center pt-4 opacity-40">
+      <div className="flex justify-center pt-4 pb-8 opacity-40">
         <BorderCollieSVG size={80} pose="sleeping" />
       </div>
     </div>
