@@ -30,7 +30,8 @@ export default function RootLayout({
         </div>
         <div className="fixed inset-0 dot-pattern opacity-30 pointer-events-none z-0" />
         <Navbar />
-        <main className="max-w-2xl mx-auto px-4 py-6 pb-24 relative z-10">
+        
+        <main className="max-w-2xl mx-auto px-4 py-6 pb-32 relative z-10">
           {children}
         </main>
         <div className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-forest-400 via-warm-400 to-forest-400 opacity-60" />
