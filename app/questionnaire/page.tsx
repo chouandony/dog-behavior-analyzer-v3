@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { sections, scoreLabels } from "@/data/questionnaire";
 import { getUnansweredInSection } from "@/data/scoring";
-import DogSVG from "@/components/DogSVG";
+import BorderCollieSVG from "@/components/BorderCollieSVG";
 
 const STORAGE_KEY = "dog-questionnaire-answers";
 const STORAGE_PROGRESS = "dog-questionnaire-progress";
@@ -221,7 +221,7 @@ export default function QuestionnairePage() {
       <div className="relative bg-gradient-to-br from-orange-50 via-white to-emerald-50 rounded-3xl border-2 border-orange-100 p-6 overflow-hidden">
         <div className="flex items-center gap-4">
           <div className="shrink-0 animate-float">
-            <DogSVG size={80} pose="waving" />
+            <BorderCollieSVG size={80} pose="waving" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
@@ -306,7 +306,7 @@ export default function QuestionnairePage() {
       <div ref={sectionRef} className={`space-y-4 ${shakeSection ? 'animate-shake' : ''}`}>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-            <Dog size={20} className="text-orange-600" />
+            <span className="text-lg">🐕</span>
           </div>
           <div>
             <h2 className="text-lg font-bold text-slate-800">{current.title}</h2>
