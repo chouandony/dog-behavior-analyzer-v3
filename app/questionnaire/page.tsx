@@ -13,7 +13,9 @@ import {
   RotateCcw,
   AlertTriangle,
 } from "lucide-react";
+
 import { questionnaireSections as sections } from "@/data/questionnaire";
+import { getUnansweredInSection } from "@/data/scoring";
 import BorderCollieSVG from "@/components/BorderCollieSVG";
 
 const STORAGE_KEY = "dog-questionnaire-answers";
