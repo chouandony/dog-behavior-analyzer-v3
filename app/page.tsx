@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { behaviors } from "@/data/behaviors";
 import BehaviorCard from "@/components/BehaviorCard";
-import DogSVG from "@/components/DogSVG";
+import BorderCollieSVG from "@/components/BorderCollieSVG";
 
 export default function HomePage() {
   const [selected, setSelected] = useState<string | null>(null);
@@ -59,7 +59,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-4">
           <div className="shrink-0 animate-float">
-            <DogSVG size={100} pose="waving" />
+            <BorderCollieSVG size={100} pose="waving" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
@@ -128,7 +128,7 @@ export default function HomePage() {
       {/* 狗狗提示條 */}
       <div className="flex items-center gap-3 bg-white rounded-xl border border-slate-200 p-3 card-hover">
         <div className="shrink-0">
-          <DogSVG size={48} pose="pointing" />
+          <BorderCollieSVG size={48} pose="pointing" />
         </div>
         <div className="flex-1">
           <p className="text-sm text-slate-700 font-bold">
@@ -187,7 +187,7 @@ export default function HomePage() {
       {/* 功能入口 */}
       <div className="pt-4 pb-24">
         <div className="flex items-center gap-2 mb-3">
-          <DogSVG size={32} pose="sitting" />
+          <BorderCollieSVG size={32} pose="sitting" />
           <h2 className="text-sm font-bold text-slate-700">更多工具</h2>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -240,7 +240,7 @@ export default function HomePage() {
 
       {/* 底部裝飾 */}
       <div className="flex justify-center pt-4 opacity-40">
-        <DogSVG size={80} pose="sleeping" />
+        <BorderCollieSVG size={80} pose="sleeping" />
       </div>
     </div>
   );
