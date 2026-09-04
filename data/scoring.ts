@@ -45,7 +45,18 @@ function getSeverity(average: number, dangerLevel: string): { severity: SectionS
   if (average >= mod) return { severity: 'moderate', label: '中度' }
   return { severity: 'low', label: '輕度' }
 }
+import { questionnaireSections } from './questionnaire'
 
+export function getUnansweredInSection(
+  answers: Record<number, number>,
+  sectionIndex: number
+): number[] {
+  const section = questionnaireSections[sectionIndex];
+  if (!section) return [];
+  return section.questions
+    .filter((q) => answers[q.id] === undefined)
+    .map((q) => q.id);
+}
 export function calculateScores(answers: Record<number, number>): AssessmentResult {
   const sectionScores: SectionScore[] = []
   const behaviorScoreMap: Record<string, { sum: number; count: number; zeroCount: number }> = {}
