@@ -12,7 +12,6 @@ import {
   BarChart3,
   Sparkles,
   Search,
-  ArrowRight,
 } from "lucide-react";
 import { calculateScores, getSeverityBadgeColor } from "@/data/scoring";
 import type { AssessmentResult } from "@/data/scoring";
@@ -92,7 +91,6 @@ export default function QuestionnaireResultPage() {
   }
 
   const risk = riskConfig[result.overallRisk];
-  const concernIds = result.topConcerns.map((b) => b.behaviorId).join(",");
   const concernCount = result.topConcerns.length;
 
   return (
@@ -120,7 +118,7 @@ export default function QuestionnaireResultPage() {
         </div>
       </div>
 
-      {/* 整體風險指數卡片（與貓版一致） */}
+      {/* 整體風險指數卡片 */}
       <div className={`rounded-2xl border-2 p-5 ${risk.bg} ${risk.border}`}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
@@ -330,20 +328,8 @@ export default function QuestionnaireResultPage() {
         </div>
       </div>
 
-      {/* 底部操作區 */}
+      {/* 底部操作區（已移除「對全部關注行為進行 ABC+E 分析」大按鈕） */}
       <div className="space-y-3 pt-2">
-        {/* 對全部關注行為進行 ABC+E 分析（與貓版一致） */}
-        {concernCount > 0 && (
-          <Link
-            href={`/abc/?behaviors=${concernIds}`}
-            className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-orange-200 transition-all active:scale-[0.98] animate-fade-in-up"
-          >
-            <Sparkles size={18} />
-            <span>對全部關注行為進行 ABC+E 分析</span>
-            <ArrowRight size={18} />
-          </Link>
-        )}
-
         <div className="flex gap-3">
           <Link
             href="/questionnaire/"
