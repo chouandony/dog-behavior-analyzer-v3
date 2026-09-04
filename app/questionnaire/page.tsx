@@ -14,7 +14,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
-import { questionnaireSections as sections } from "@/data/questionnaire";
+import { questionnaireSections as sections, scoreLabels } from "@/data/questionnaire";
 import { getUnansweredInSection } from "@/data/scoring";
 import BorderCollieSVG from "@/components/BorderCollieSVG";
 
