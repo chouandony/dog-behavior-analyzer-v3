@@ -85,7 +85,7 @@ export default function QuestionnairePage() {
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       const allUnanswered = sections
-        .flatMap((s) => s.questions.map((q) => q.id))
+        .flatMap((s) => s.questions.map((q: { id: number }) => q.id))
         .filter((id) => answers[id] === undefined);
       if (allUnanswered.length > 0) {
         e.preventDefault();
