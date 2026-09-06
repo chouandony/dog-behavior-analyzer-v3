@@ -1,41 +1,42 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import Navbar from '@/components/Navbar'
-import BorderCollieSVG from '@/components/BorderCollieSVG'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: '狗狗行為分析與訓練對策 | Dog Behavior Analyzer',
-  description: '從100題行為評估到ABC分析與訓練技術選擇的完整流程。分析狗狗不良行為，找到最適合的訓練對策，記錄進度改善成效。',
-  keywords: '狗狗訓練, 行為分析, 吠叫, 咬人, 爆衝, 分離焦慮, 正向訓練, ABC分析, 行為評估',
-  openGraph: {
-    title: '狗狗行為分析與訓練對策',
-    description: '從原因判斷到訓練技術選擇的完整流程',
-    type: 'website',
-  },
-}
+  title: "狗狗行為分析器 — 專業行為評估與ABC分析",
+  description: "基於學術研究框架的狗狗行為評估工具，提供100題專業問卷、ABC行為分析與個人化訓練對策。",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="zh-TW">
-      <body className="bg-cream min-h-screen text-earth-500 relative overflow-x-hidden">
-        <div className="fixed top-20 right-2 opacity-[0.06] pointer-events-none z-0 hidden lg:block">
-          <BorderCollieSVG size={180} pose="standing" />
-        </div>
-        <div className="fixed bottom-10 left-2 opacity-[0.05] pointer-events-none z-0 hidden lg:block rotate-[-10deg]">
-          <BorderCollieSVG size={150} pose="sleeping" />
-        </div>
-        <div className="fixed inset-0 dot-pattern opacity-30 pointer-events-none z-0" />
-        <Navbar />
-        
-        <main className="max-w-2xl mx-auto px-4 py-6 pb-[72px] relative z-10">
+      <body className={`${inter.className} bg-cream min-h-screen`}>
+        <div className="max-w-2xl mx-auto px-4 py-6 pb-40 relative z-10">
           {children}
-        </main>
+        </div>
+
+        {/* 底部免責聲明 */}
+        <div className="fixed bottom-16 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-amber-200 z-40">
+          <div className="max-w-2xl mx-auto px-4 py-2">
+            <p className="text-[10px] text-amber-700 leading-tight text-center">
+              ⚠️ 本工具僅供輔助參考，不構成專業獸醫或動物行為諮詢建議。
+              評估結果與訓練對策基於學術研究框架獨立編寫，非官方授權的標準化問卷。
+              若您依據本工具建議操作，導致寵物受傷、行為問題惡化或人員受傷，開發者不負相關法律責任。
+              如有嚴重行為問題，請尋求認證行為諮詢師協助。
+            </p>
+          </div>
+        </div>
+
         <div className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-forest-400 via-warm-400 to-forest-400 opacity-60" />
+        <Navbar />
       </body>
     </html>
-  )
+  );
 }
