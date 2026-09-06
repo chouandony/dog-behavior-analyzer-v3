@@ -652,7 +652,7 @@ export default function HomePage() {
           className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex items-end sm:items-center justify-center"
           onClick={(e) => { if (e.target === e.currentTarget) setShowGuide(false); }}
         >
-          <div className="bg-white w-full max-w-2xl h-[85vh] sm:h-[80vh] sm:rounded-3xl rounded-t-3xl shadow-2xl flex flex-col overflow-hidden">
+          <div className="bg-white w-full max-w-2xl h-[100dvh] sm:h-[80vh] sm:rounded-3xl rounded-t-3xl shadow-2xl flex flex-col overflow-hidden">
             {/* 頂部標題列 */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-gradient-to-r from-orange-50 to-emerald-50 shrink-0">
               <div className="flex items-center gap-2">
@@ -669,14 +669,14 @@ export default function HomePage() {
             </div>
 
             {/* 內容區 */}
-            <div className="flex-1 overflow-y-auto px-5 py-4">
+            <div className="flex-1 overflow-y-auto px-5 py-4 pb-4">
               <div className="animate-fade-in">
                 {guidePages[guidePage]}
               </div>
             </div>
 
             {/* 底部翻頁控制 */}
-            <div className="flex items-center justify-between px-5 py-4 border-t border-slate-100 bg-white shrink-0">
+            <div className="flex items-center justify-between px-5 pt-4 pb-16 sm:pb-4 border-t border-slate-100 bg-white shrink-0">
               <button
                 onClick={() => setGuidePage((p) => Math.max(0, p - 1))}
                 disabled={guidePage === 0}
