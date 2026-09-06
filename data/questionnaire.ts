@@ -1,4 +1,17 @@
-import type { Question, QuestionnaireSection } from './types'
+interface Question {
+  id: number
+  text: string
+  behaviorMapping: string[]
+}
+
+interface QuestionnaireSection {
+  id: string
+  title: string
+  description: string
+  scaleLabels: string[]
+  zeroLabel: string
+  questions: Question[]
+}
 
 export const questionnaireSections: QuestionnaireSection[] = [
   {
