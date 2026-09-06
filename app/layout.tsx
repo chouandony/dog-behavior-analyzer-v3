@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <body className={`${inter.className} bg-cream min-h-screen`}>
-        <div className="max-w-2xl mx-auto px-4 py-6 pb-24 relative z-10">
+        <div className="max-w-2xl mx-auto px-4 py-6 pb-32 relative z-10">
           {children}
 
           {/* 底部免責聲明 — 非 fixed，隨頁面流動 */}
