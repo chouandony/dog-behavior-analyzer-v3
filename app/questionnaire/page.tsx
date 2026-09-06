@@ -326,7 +326,7 @@ export default function QuestionnairePage() {
 
         {/* 題目列表 */}
         <div className="space-y-3">
-          {current.questions.map((q) => {
+          {current.questions.map((q: { id: number; text: string; behaviorMapping: string[] }) => {
             const missing = isQuestionMissing(q.id);
             const selected = answers[q.id];
             const isHighlighted = highlightId === q.id;
