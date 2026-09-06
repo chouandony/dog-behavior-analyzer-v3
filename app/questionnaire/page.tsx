@@ -8,7 +8,6 @@ import {
   AlertCircle,
   CheckCircle2,
   ClipboardCheck,
-  Dog,
   Save,
   RotateCcw,
   AlertTriangle,
@@ -228,7 +227,7 @@ export default function QuestionnairePage() {
             <div className="flex items-center gap-2 mb-1">
               <ClipboardCheck size={16} className="text-orange-500" />
               <span className="text-xs font-bold text-orange-600 tracking-wide">
-                CBARQ 專業評估
+                專業行為評估
               </span>
             </div>
             <h1 className="text-xl font-black text-slate-800 leading-tight">
@@ -256,6 +255,13 @@ export default function QuestionnairePage() {
             <span>第 {currentSection + 1} / {totalSections} 部分</span>
           </div>
         </div>
+      </div>
+
+      {/* 免責聲明 */}
+      <div className="bg-amber-50 rounded-xl border border-amber-200 p-3">
+        <p className="text-xs text-amber-700 leading-relaxed">
+          <b>⚠️ 重要聲明：</b>本問卷基於學術研究框架獨立編寫，非官方授權的 CBARQ 問卷。評估結果僅供參考，不能取代專業獸醫或認證行為諮詢師的診斷。若您依據本工具的建議操作，導致寵物受傷、行為問題惡化或人員受傷，開發者不負相關法律責任。
+        </p>
       </div>
 
       {/* 紅色警告區塊 */}
