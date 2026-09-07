@@ -216,7 +216,7 @@ export default function QuestionnairePage() {
   };
 
   return (
-    <div className="space-y-4 pb-28">
+    <div className="space-y-4 pb-36">
       {/* 頂部標題區 */}
       <div className="relative bg-gradient-to-br from-orange-50 via-white to-emerald-50 rounded-3xl border-2 border-orange-100 p-6 overflow-hidden">
         <div className="flex items-center gap-4">
@@ -419,7 +419,7 @@ export default function QuestionnairePage() {
       </div>
 
       {/* 底部導航按鈕 */}
-      <div className="fixed bottom-6 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
+      <div className="fixed bottom-14 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
          <div className="max-w-2xl mx-auto flex items-center gap-3">
           <button
             onClick={handlePrev}
