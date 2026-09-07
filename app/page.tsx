@@ -452,7 +452,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-4">
           <div className="shrink-0 animate-float">
-            <BorderCollieSVG size={100} pose="waving" />
+            <BorderCollieSVG size={100} pose="playbow" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
