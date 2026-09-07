@@ -385,6 +385,76 @@ const guidePages = [
   </div>,
 ];
 
+
+// 訪客計數器元件
+function VisitorCounter() {
+  const [count, setCount] = React.useState(0);
+  const [displayCount, setDisplayCount] = React.useState(0);
+  const [loaded, setLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    // 檢查今日是否已計數
+    const today = new Date().toISOString().slice(0, 10);
+    const hasVisitedToday = localStorage.getItem(`visited_${today}`);
+    const isNewVisitor = !hasVisitedToday;
+
+    // 呼叫 API
+    fetch("/api/visits", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isNewVisitor }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCount(data.total);
+        setLoaded(true);
+        if (isNewVisitor) {
+          localStorage.setItem(`visited_${today}`, "true");
+        }
+      })
+      .catch(() => {
+        setLoaded(false);
+      });
+  }, []);
+
+  // Count-up 動畫
+  React.useEffect(() => {
+    if (!loaded || count <= 0) return;
+    const duration = 1000;
+    const startTime = performance.now();
+    const startValue = 0;
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutQuart
+      const ease = 1 - Math.pow(1 - progress, 4);
+      const current = Math.floor(startValue + (count - startValue) * ease);
+      setDisplayCount(current);
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [count, loaded]);
+
+  if (!loaded) return null;
+
+  return (
+    <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full">
+      <span className="text-sm animate-bounce" style={{ animationDuration: "2s" }}>👋</span>
+      <span className="text-xs font-medium">
+        您是第{" "}
+        <span className="text-sm font-bold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">
+          {displayCount.toLocaleString("zh-TW")}
+        </span>{" "}
+        位訪客
+      </span>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [shakeCard, setShakeCard] = useState(false);
@@ -469,6 +539,8 @@ export default function HomePage() {
               <span className="font-bold text-orange-600">ABC+E 分析</span>{" "}
               與對策規劃
             </p>
+            {/* 訪客計數器 */}
+            <VisitorCounter />
           </div>
         </div>
 
