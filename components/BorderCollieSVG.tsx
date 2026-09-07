@@ -3,7 +3,7 @@
 interface Props {
   className?: string
   size?: number
-  pose?: 'sitting' | 'standing' | 'waving' | 'sleeping' | 'pointing'
+  pose?: 'sitting' | 'standing' | 'waving' | 'sleeping' | 'pointing' | 'playbow'
 }
 
 export default function BorderCollieSVG({ className = '', size = 120, pose = 'sitting' }: Props) {
@@ -184,6 +184,62 @@ export default function BorderCollieSVG({ className = '', size = 120, pose = 'si
         {/* 指向的鼻子 */}
         <ellipse cx="100" cy="82" rx="8" ry="5" fill="#1a1a2e" />
         <path d="M96 78 L100 72 L104 78" fill="#1a1a2e" />
+      </svg>
+    ),
+    playbow: (
+      <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+        {/* 后腿（站立） */}
+        <rect x="125" y="115" width="14" height="55" rx="7" fill="#1a1a2e" />
+        <rect x="148" y="115" width="14" height="55" rx="7" fill="#1a1a2e" />
+        {/* 后爪 */}
+        <ellipse cx="132" cy="168" rx="9" ry="5" fill="#f5f5f0" />
+        <ellipse cx="155" cy="168" rx="9" ry="5" fill="#f5f5f0" />
+        {/* 身体主体 */}
+        <ellipse cx="105" cy="125" rx="48" ry="32" fill="#1a1a2e" />
+        {/* 胸部白毛 */}
+        <ellipse cx="95" cy="118" rx="28" ry="22" fill="#ffffff" />
+        {/* 前腿（趴下） */}
+        <rect x="58" y="145" width="13" height="38" rx="6.5" fill="#1a1a2e" transform="rotate(-15 64.5 164)" />
+        <rect x="82" y="148" width="13" height="38" rx="6.5" fill="#1a1a2e" transform="rotate(10 88.5 167)" />
+        {/* 前爪（趴地） */}
+        <ellipse cx="52" cy="178" rx="10" ry="6" fill="#f5f5f0" />
+        <ellipse cx="88" cy="182" rx="10" ry="6" fill="#f5f5f0" />
+        {/* 头部 */}
+        <ellipse cx="72" cy="78" rx="36" ry="32" fill="#1a1a2e" />
+        {/* 脸部白毛 - 边牧 blaze */}
+        <path d="M72 52 L72 96" stroke="#ffffff" strokeWidth="12" strokeLinecap="round" />
+        <ellipse cx="72" cy="80" rx="16" ry="18" fill="#ffffff" />
+        {/* 左眼 */}
+        <ellipse cx="60" cy="74" rx="9" ry="10" fill="#ffffff" />
+        <circle cx="61" cy="75" r="4.5" fill="#2d5a3d" />
+        <circle cx="62" cy="74" r="2" fill="#1a1a2e" />
+        <circle cx="59.5" cy="72.5" r="1.2" fill="#ffffff" />
+        {/* 右眼 */}
+        <ellipse cx="84" cy="74" rx="9" ry="10" fill="#ffffff" />
+        <circle cx="83" cy="75" r="4.5" fill="#2d5a3d" />
+        <circle cx="82" cy="74" r="2" fill="#1a1a2e" />
+        <circle cx="84.5" cy="72.5" r="1.2" fill="#ffffff" />
+        {/* 鼻子 */}
+        <ellipse cx="72" cy="90" rx="6" ry="4.5" fill="#1a1a2e" />
+        <ellipse cx="72" cy="88.5" rx="2.5" ry="1.8" fill="#333" />
+        {/* 嘴巴 - 开心的笑容 */}
+        <path d="M66 95 Q72 100 78 95" stroke="#1a1a2e" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M70 97 Q72 99 74 97" stroke="#e86a33" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        {/* 左耳（竖起） */}
+        <path d="M44 58 Q36 32 30 42 Q28 52 40 56" fill="#1a1a2e" />
+        <path d="M42 56 Q36 40 32 48 Q31 54 38 56" fill="#f5f5f0" />
+        {/* 右耳（竖起） */}
+        <path d="M100 58 Q108 32 114 42 Q116 52 104 56" fill="#1a1a2e" />
+        <path d="M102 56 Q108 40 112 48 Q113 54 106 56" fill="#f5f5f0" />
+        {/* 尾巴（高高翘起） */}
+        <path d="M145 105 Q170 75 175 50 Q178 35 170 40 Q165 45 168 55" stroke="#1a1a2e" strokeWidth="11" strokeLinecap="round" fill="none" />
+        <path d="M168 60 Q173 50 175 42" stroke="#ffffff" strokeWidth="5" strokeLinecap="round" fill="none" />
+        {/* 项圈 */}
+        <path d="M52 105 Q72 115 92 105" stroke="#e86a33" strokeWidth="4.5" strokeLinecap="round" fill="none" />
+        <circle cx="72" cy="110" r="3.5" fill="#d4af37" />
+        {/* 脸颊白毛 */}
+        <ellipse cx="52" cy="82" rx="7" ry="9" fill="#ffffff" opacity="0.9" />
+        <ellipse cx="92" cy="82" rx="7" ry="9" fill="#ffffff" opacity="0.9" />
       </svg>
     ),
   }
