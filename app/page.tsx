@@ -388,11 +388,11 @@ const guidePages = [
 
 // 訪客計數器元件
 function VisitorCounter() {
-  const [count, setCount] = React.useState(0);
-  const [displayCount, setDisplayCount] = React.useState(0);
-  const [loaded, setLoaded] = React.useState(false);
+  const [count, setCount] = useState(0);
+  const [displayCount, setDisplayCount] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 檢查今日是否已計數
     const today = new Date().toISOString().slice(0, 10);
     const hasVisitedToday = localStorage.getItem(`visited_${today}`);
@@ -418,7 +418,7 @@ function VisitorCounter() {
   }, []);
 
   // Count-up 動畫
-  React.useEffect(() => {
+  useEffect(() => {
     if (!loaded || count <= 0) return;
     const duration = 1000;
     const startTime = performance.now();
