@@ -192,13 +192,25 @@ function ABCForm() {
             </div>
           </div>
 
-          <button
-            onClick={submit}
+          <a
+            href={`/result/?behaviors=${selectedBehaviors.map(b => b.id).join(',')}${fn ? `&fn=${encodeURIComponent(fn)}` : ''}${a ? `&a=${encodeURIComponent(a)}` : ''}${b ? `&b=${encodeURIComponent(b)}` : ''}${c ? `&c=${encodeURIComponent(c)}` : ''}`}
             className="w-full flex items-center justify-center gap-2 bg-forest-500 hover:bg-forest-600 text-white font-bold py-3 rounded-xl transition-colors"
+            onClick={(e) => {
+              if (selectedBehaviors.length === 0) {
+                e.preventDefault()
+                setError('請至少選擇一個行為問題')
+                return
+              }
+              if (!fn) {
+                e.preventDefault()
+                setError('請選擇行為功能')
+                return
+              }
+            }}
           >
             <span>查看訓練對策</span>
             <ArrowRight size={18} />
-          </button>
+          </a>
         </div>
       )}
 
