@@ -174,7 +174,7 @@ export default function QuestionnairePage() {
             setWarning({
               show: true,
               missing: allMissing,
-              message: `全問卷尚有 ${allMissing.length} 題未作答，已自動跳轉至未完成區塊`,
+              message: `全行為評估問卷尚有 ${allMissing.length} 題未作答，已自動跳轉至未完成區塊`,
             });
             setShakeSection(true);
             setTimeout(() => setShakeSection(false), 500);
@@ -216,12 +216,12 @@ export default function QuestionnairePage() {
   };
 
   return (
-    <div className="space-y-4 pb-36">
+    <div className="space-y-4 pb-40">
       {/* 頂部標題區 */}
       <div className="relative bg-gradient-to-br from-orange-50 via-white to-emerald-50 rounded-3xl border-2 border-orange-100 p-6 overflow-hidden">
         <div className="flex items-center gap-4">
           <div className="shrink-0 animate-float">
-            <BorderCollieSVG size={80} pose="playbow" />
+            <BorderCollieSVG size={80} pose="waving" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
@@ -260,7 +260,7 @@ export default function QuestionnairePage() {
       {/* 免責聲明 */}
       <div className="bg-amber-50 rounded-xl border border-amber-200 p-3">
         <p className="text-xs text-amber-700 leading-relaxed">
-          <b>⚠️ 重要聲明：</b>本問卷基於學術研究框架獨立編寫，非官方授權的標準化問卷。評估結果僅供參考，不能取代專業獸醫或認證行為諮詢師的診斷。若您依據本工具的建議操作，導致寵物受傷、行為問題惡化或人員受傷，開發者不負相關法律責任。
+          <b>⚠️ 重要聲明：</b>本問卷基於學術研究框架獨立編寫，非官方授權的標準化行為評估問卷。評估結果僅供參考，不能取代專業獸醫或認證行為諮詢師的診斷。若您依據本工具的建議操作，導致寵物受傷、行為問題惡化或人員受傷，開發者不負相關法律責任。
         </p>
       </div>
 
@@ -419,7 +419,7 @@ export default function QuestionnairePage() {
       </div>
 
       {/* 底部導航按鈕 */}
-      <div className="fixed bottom-14 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
+      <div className="fixed bottom-16 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
          <div className="max-w-2xl mx-auto flex items-center gap-3">
           <button
             onClick={handlePrev}

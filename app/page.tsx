@@ -103,7 +103,7 @@ const guidePages = [
   </div>,
   <div key="4" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📊 行為評估｜先全面了解你的狗</h3>
-    <p className="text-sm text-slate-600 leading-relaxed">本問卷基於學術研究框架設計，涵蓋 7 大類行為維度，幫助您全面了解狗狗的行為特徵。</p>
+    <p className="text-sm text-slate-600 leading-relaxed">本行為評估問卷基於學術研究框架設計，涵蓋 7 大類行為維度，幫助您全面了解狗狗的行為特徵。</p>
     <p className="text-xs text-slate-500">這是一套參考學術研究框架編寫的行為評估問卷，改編為一般飼主也能在家完成的互動式問卷。</p>
     <div className="bg-gradient-to-br from-orange-50 to-emerald-50 rounded-xl border-2 border-orange-200 p-4">
       <p className="text-sm font-bold text-slate-700 mb-3">📋 7 大類別一覽</p>
@@ -120,7 +120,7 @@ const guidePages = [
     <p className="text-xs text-slate-500 text-center">總共 <span className="font-bold text-orange-600">100 題</span>，預估時間約 <span className="font-bold text-orange-600">10～15 分鐘</span></p>
   </div>,
   <div key="5" className="space-y-4">
-    <h3 className="text-lg font-black text-slate-800">📝 問卷怎麼填？</h3>
+    <h3 className="text-lg font-black text-slate-800">📝 行為評估問卷怎麼填？</h3>
     <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
       <p className="text-sm font-bold text-slate-700 mb-3">每題都是 0～5 分：</p>
       <div className="grid grid-cols-6 gap-1 text-center text-xs">
@@ -138,7 +138,7 @@ const guidePages = [
       <p><span className="font-bold text-orange-600">🔹 5 分值得注意</span><br/>系統會提醒你：這個行為頻率很高，建議優先關注。</p>
     </div>
     <div className="bg-blue-50 rounded-xl border border-blue-200 p-3">
-      <p className="text-sm font-bold text-blue-700 mb-2">📌 問卷還有這些貼心功能</p>
+      <p className="text-sm font-bold text-blue-700 mb-2">📌 行為評估問卷還有這些貼心功能</p>
       <div className="space-y-1 text-xs text-slate-600">
         <p>📊 <b>頂部進度條</b> — 顯示完成幾題、在第幾個部分</p>
         <p>🔵 <b>部分快捷列</b> — 直接跳到指定部分，完成的會顯示 ✓</p>
@@ -536,7 +536,7 @@ export default function HomePage() {
             </h1>
             <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">
               選擇您想了解的問題行為，開始{" "}
-              <span className="font-bold text-orange-600">ABC+E 分析</span>{" "}
+              <span className="font-bold text-orange-600">ABC 分析</span>{" "}
               與對策規劃
             </p>
             {/* 訪客計數器 */}
@@ -566,7 +566,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 問卷入口 */}
+      {/* 行為評估問卷入口 */}
       <Link
         href="/questionnaire/"
         className="group block relative bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-5 text-white shadow-lg hover:shadow-xl transition-all active:scale-[0.98] overflow-hidden"
@@ -610,7 +610,7 @@ export default function HomePage() {
             👇 請選擇一個您想了解的問題行為
           </p>
           <p className="text-xs text-slate-400 mt-0.5">
-            點擊下方卡片選擇一項，即可進行 ABC+E 行為分析
+            點擊下方卡片選擇一項，即可進行 ABC 行為分析
           </p>
         </div>
       </div>
@@ -708,7 +708,7 @@ export default function HomePage() {
               <ClipboardList size={22} className="text-purple-500" />
             </div>
             <span className="text-sm font-bold text-slate-700">直接分析</span>
-            <span className="text-[10px] text-slate-400">快速 ABC+E 分析</span>
+            <span className="text-[10px] text-slate-400">快速 ABC 分析</span>
           </Link>
         </div>
       </div>
