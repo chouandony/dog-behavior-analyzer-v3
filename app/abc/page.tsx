@@ -52,7 +52,7 @@ function ABCForm() {
     if (answers.b) params.set('b', answers.b)
     if (answers.c) params.set('c', answers.c)
     if (answers.functionId) params.set('fn', answers.functionId)
-    router.push(`/result/?${params.toString()}`)
+    router.push(`/training/?${params.toString()}`)
   }
 
   // 單選防呆：必須選一個才能下一步
