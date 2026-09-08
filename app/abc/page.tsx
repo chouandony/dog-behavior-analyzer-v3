@@ -192,13 +192,13 @@ function ABCForm() {
             </div>
           </div>
 
-          <button
-            onClick={submit}
+          <a
+            href={`/training/?behaviors=${selectedBehavior || ''}${answers.a ? `&a=${encodeURIComponent(answers.a)}` : ''}${answers.b ? `&b=${encodeURIComponent(answers.b)}` : ''}${answers.c ? `&c=${encodeURIComponent(answers.c)}` : ''}${answers.functionId ? `&fn=${encodeURIComponent(answers.functionId)}` : ''}`}
             className="w-full flex items-center justify-center gap-2 bg-forest-500 hover:bg-forest-600 text-white font-bold py-3 rounded-xl transition-colors"
           >
             <span>查看訓練對策</span>
             <ArrowRight size={18} />
-          </button>
+          </a>
         </div>
       )}
 
