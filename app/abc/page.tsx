@@ -192,13 +192,32 @@ function ABCForm() {
             </div>
           </div>
 
-          <a
-            href={`/training/?behaviors=${selectedBehavior || ''}${answers.a ? `&a=${encodeURIComponent(answers.a)}` : ''}${answers.b ? `&b=${encodeURIComponent(answers.b)}` : ''}${answers.c ? `&c=${encodeURIComponent(answers.c)}` : ''}${answers.functionId ? `&fn=${encodeURIComponent(answers.functionId)}` : ''}`}
-            className="w-full flex items-center justify-center gap-2 bg-forest-500 hover:bg-forest-600 text-white font-bold py-3 rounded-xl transition-colors"
-          >
-            <span>查看訓練對策</span>
-            <ArrowRight size={18} />
-          </a>
+<button
+  onClick={() => {
+    // 驗證
+    if (!selectedBehavior) {
+      setError('請至少選擇一個行為問題')
+      return
+    }
+    if (!answers.functionId) {
+      setError('請選擇行為功能')
+      return
+    }
+    // 組裝參數
+    const params = new URLSearchParams()
+    params.set('behaviors', selectedBehavior)
+    if (answers.a) params.set('a', answers.a)
+    if (answers.b) params.set('b', answers.b)
+    if (answers.c) params.set('c', answers.c)
+    if (answers.functionId) params.set('fn', answers.functionId)
+    // 強制導航，完全繞過 Next.js 路由
+    window.location.href = `/training/?${params.toString()}`
+  }}
+  className="..."
+>
+  查看訓練對策
+  <ArrowRight size={18} />
+</button>
         </div>
       )}
 
