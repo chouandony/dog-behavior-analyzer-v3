@@ -201,7 +201,7 @@ function ABCForm() {
               if (answers.c) params.set('c', answers.c)
               if (answers.functionId) params.set('fn', answers.functionId)
               // 強制導航，完全繞過 Next.js 路由
-              window.location.href = `/training/?${params.toString()}`
+              window.location.href = `/result/?${params.toString()}`
             }}
             className="w-full flex items-center justify-center gap-2 bg-forest-500 hover:bg-forest-600 text-white font-bold py-3 rounded-xl transition-colors"
           >
