@@ -13,7 +13,7 @@ interface Props {
 const phaseColors = {
   '安全管理': 'bg-red-50 border-red-200 text-red-700',
   '核心訓練': 'bg-warm-50 border-warm-200 text-warm-700',
-  '日常管理': 'bg-forest-50 border-forest-200 text-forest-700',
+  '日常管理': 'bg-orange-50 border-orange-200 text-orange-700',
 }
 
 const priorityLabels = {
