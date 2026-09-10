@@ -29,13 +29,17 @@ export async function POST(req: NextRequest) {
   try {
     const { isNewVisitor } = await req.json().catch(() => ({ isNewVisitor: false }));
     const today = getTodayKey();
-    const total = await redis.incr(TOTAL_KEY);
-    let daily = 0;
+
+    // 只有「新訪客」（每瀏覽器每天第一次）才累加 total，避免切換頁面/重新整理灌水
     if (isNewVisitor) {
-      daily = await redis.incr(`${DAILY_PREFIX}:${today}`);
-    } else {
-      daily = await redis.get(`${DAILY_PREFIX}:${today}`) || 0;
+      const total = await redis.incr(TOTAL_KEY);
+      const daily = await redis.incr(`${DAILY_PREFIX}:${today}`);
+      return NextResponse.json({ total: Number(total), daily: Number(daily) });
     }
+
+    // 非新訪客：只回傳目前數字，不累加
+    const total = await redis.get(TOTAL_KEY) || 0;
+    const daily = await redis.get(`${DAILY_PREFIX}:${today}`) || 0;
     return NextResponse.json({ total: Number(total), daily: Number(daily) });
   } catch {
     return NextResponse.json({ total: 12847, daily: 0 });
