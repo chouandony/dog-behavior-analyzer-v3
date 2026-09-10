@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -636,7 +637,7 @@ export default function HomePage() {
       </div>
 
       {/* 底部浮動按鈕 */}
-      <div className="fixed bottom-16 left-0 right-0 px-4 z-[60]">
+      <div className="fixed bottom-[calc(var(--navbar-height,3.5rem)_+_var(--disclaimer-height,5rem))] left-0 right-0 px-4 z-[60]">
         <div className="max-w-2xl mx-auto">
           {selected ? (
             <Link
@@ -719,7 +720,7 @@ export default function HomePage() {
       </div>
 
       {/* 使用手冊彈窗 */}
-      {showGuide && (
+      {showGuide && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex items-end sm:items-center justify-center"
           onClick={(e) => { if (e.target === e.currentTarget) setShowGuide(false); }}
@@ -789,7 +790,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      )}
+, document.body)}
     </div>
   );
 }

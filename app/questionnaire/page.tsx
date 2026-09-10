@@ -419,7 +419,7 @@ export default function QuestionnairePage() {
       </div>
 
       {/* 底部導航按鈕 */}
-      <div className="fixed bottom-16 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
+      <div className="fixed bottom-[calc(var(--navbar-height,3.5rem)_+_var(--disclaimer-height,5rem))] left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 z-50">
          <div className="max-w-2xl mx-auto flex items-center gap-3">
           <button
             onClick={handlePrev}

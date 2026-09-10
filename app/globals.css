@@ -1,3 +1,8 @@
+/* ===== 底部導覽列與免責聲明高度（JS 會在 mount 後覆寫為實測高度）===== */
+:root {
+  --navbar-height: 3.5rem;
+  --disclaimer-height: 5rem;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

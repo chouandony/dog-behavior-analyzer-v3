@@ -17,7 +17,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-earth-200">
+    <nav id="site-navbar" className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-t border-earth-200">
       <div className="max-w-2xl mx-auto px-2">
         <div className="flex justify-around py-2">
           {navItems.map(item => {
