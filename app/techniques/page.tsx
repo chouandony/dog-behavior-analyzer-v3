@@ -17,7 +17,7 @@ export default function TechniquesPage() {
     <div className="space-y-6">
       <div className="text-center">
         <div className="flex justify-center mb-4">
-          <BorderCollieSVG size={90} pose="waving" />
+          <BorderCollieSVG size={90} pose="beg" />
         </div>
         <div className="inline-flex items-center gap-2 bg-white/80 rounded-full px-4 py-2 border-2 border-pink-100 shadow-soft mb-3">
           <BookOpen size={16} className="text-pink-400" />

@@ -53,7 +53,7 @@ export default function AnalysisPage() {
               C（Consequence）後果：行為發生後，狗狗得到了什麼、逃離了什麼？
             </p>
             <div className="flex justify-center mt-3">
-              <BorderCollieSVG size={90} pose="standing" />
+              <BorderCollieSVG size={90} pose="rollup" />
             </div>
           </div>
           {abcFunctions.map(fn => (
@@ -70,7 +70,7 @@ export default function AnalysisPage() {
               狗狗行為通常不是單一原因，而是多層因素疊加。如果你只找到一個原因，通常代表分析還不夠完整。
             </p>
             <div className="flex justify-center mt-3">
-              <BorderCollieSVG size={85} pose="sitting" />
+              <BorderCollieSVG size={85} pose="beg" />
             </div>
           </div>
           {nineCauses.map(cause => (

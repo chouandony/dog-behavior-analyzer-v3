@@ -147,7 +147,7 @@ export default function TrackerPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <BorderCollieSVG size={48} pose="standing" />
+        <BorderCollieSVG size={48} pose="running" />
         <div>
           <h1 className="text-xl font-bold text-earth-500">進度追蹤</h1>
           <p className="text-sm text-earth-400 mt-1">記錄每日數據，觀察行為改善趨勢</p>

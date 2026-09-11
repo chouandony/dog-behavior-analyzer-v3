@@ -663,7 +663,7 @@ export default function HomePage() {
       {/* 功能入口 */}
       <div className="pt-4 pb-32">
         <div className="flex items-center gap-2 mb-3">
-          <BorderCollieSVG size={32} pose="sitting" />
+          <BorderCollieSVG size={32} pose="standing" />
           <h2 className="text-sm font-bold text-slate-700">更多工具</h2>
         </div>
         <div className="grid grid-cols-2 gap-3">

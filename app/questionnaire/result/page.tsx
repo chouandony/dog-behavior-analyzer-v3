@@ -99,7 +99,7 @@ export default function QuestionnaireResultPage() {
       <div className="relative bg-gradient-to-br from-orange-50 via-white to-emerald-50 rounded-3xl border-2 border-orange-100 p-6 overflow-hidden">
         <div className="flex items-center gap-4">
           <div className="shrink-0">
-            <BorderCollieSVG size={80} pose="waving" />
+            <BorderCollieSVG size={80} pose="howling" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
