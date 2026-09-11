@@ -604,7 +604,7 @@ export default function HomePage() {
       {/* 狗狗提示條 */}
       <div className="flex items-center gap-3 bg-white rounded-xl border border-slate-200 p-3 card-hover">
         <div className="shrink-0">
-          <BorderCollieSVG size={48} pose="pointing" />
+          <BorderCollieSVG size={48} pose="bone" />
         </div>
         <div className="flex-1">
           <p className="text-sm text-slate-700 font-bold">
