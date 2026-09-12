@@ -63,12 +63,14 @@ const riskConfig = {
 export default function QuestionnaireResultPage() {
   const router = useRouter();
   const [result, setResult] = useState<AssessmentResult | null>(null);
+  const [answeredCount, setAnsweredCount] = useState(0);
 
   useEffect(() => {
     const saved = sessionStorage.getItem("dog-questionnaire-result");
     if (saved) {
       try {
         const answers = JSON.parse(saved);
+        setAnsweredCount(Object.keys(answers).length);
         const assessment = calculateScores(answers);
         setResult(assessment);
       } catch {
@@ -111,9 +113,7 @@ export default function QuestionnaireResultPage() {
             <h1 className="text-xl font-black text-slate-800 leading-tight">
               評估結果報告
             </h1>
-            <p className="text-sm text-slate-500 mt-1">
-              共完成 {result.behaviorScores.reduce((sum, b) => sum + b.answeredCount, 0)} 題評估
-            </p>
+           <p className="text-sm text-slate-500 mt-1">共完成 {answeredCount} 題評估</p>
           </div>
         </div>
       </div>

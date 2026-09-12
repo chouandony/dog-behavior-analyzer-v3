@@ -52,7 +52,7 @@ const guidePages = [
     <div className="grid grid-cols-1 gap-3">
       <div className="bg-emerald-50 rounded-xl border border-emerald-200 p-3">
         <p className="text-sm font-bold text-emerald-700">🔹 系統化評估</p>
-        <p className="text-xs text-slate-600 mt-1">透過專業行為評估問卷，100 題完整評估狗狗的 7 大類行為。</p>
+        <p className="text-xs text-slate-600 mt-1">透過專業行為評估問卷，105 題完整評估狗狗的 7 大類行為。</p>
       </div>
       <div className="bg-blue-50 rounded-xl border border-blue-200 p-3">
         <p className="text-sm font-bold text-blue-700">🔹 科學化分析</p>
@@ -87,7 +87,7 @@ const guidePages = [
       </div>
       <div className="bg-warm-50 rounded-lg p-3 border border-warm-200">
         <p className="text-sm font-bold text-warm-700">📋 行為評估問卷</p>
-        <p className="text-xs text-slate-600 mt-1">100 題專業評估，涵蓋 7 大行為類別。<br/>適合：「我不知道狗狗到底有什麼問題。」</p>
+        <p className="text-xs text-slate-600 mt-1">105 題專業評估，涵蓋 7 大行為類別。<br/>適合：「我不知道狗狗到底有什麼問題。」</p>
       </div>
       <div className="bg-slate-50 rounded-lg p-3">
         <p className="text-sm font-bold text-slate-700">🐶 問題行為卡片（共 10 項）</p>
@@ -115,10 +115,10 @@ const guidePages = [
         <p className="text-slate-700"><b>4.</b> 與分離有關的行為（8題）</p>
         <p className="text-slate-700"><b>5.</b> 興奮性（6題）</p>
         <p className="text-slate-700"><b>6.</b> 依戀和尋求關注（6題）</p>
-        <p className="text-slate-700"><b>7.</b> 雜項行為問題（27題）</p>
+        <p className="text-slate-700"><b>7.</b> 雜項行為問題（32題）</p>
       </div>
     </div>
-    <p className="text-xs text-slate-500 text-center">總共 <span className="font-bold text-warm-600">100 題</span>，預估時間約 <span className="font-bold text-warm-600">10～15 分鐘</span></p>
+    <p className="text-xs text-slate-500 text-center">總共 <span className="font-bold text-warm-600">105 題</span>，預估時間約 <span className="font-bold text-warm-600">10～15 分鐘</span></p>
   </div>,
   <div key="5" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📝 行為評估問卷怎麼填？</h3>
@@ -153,7 +153,7 @@ const guidePages = [
   </div>,
   <div key="6" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📈 評估結果報告｜看懂你的狗</h3>
-    <p className="text-sm text-slate-600">完成 100 題後，點「提交分析」，系統自動計算結果。</p>
+    <p className="text-sm text-slate-600">完成 105 題後，點「提交分析」，系統自動計算結果。</p>
     <div className="bg-white rounded-xl border-2 border-slate-200 p-4 space-y-3">
       <div className="bg-gradient-to-r from-emerald-100 via-yellow-100 to-red-100 rounded-lg p-3">
         <p className="text-sm font-bold text-slate-700">📊 整體行為風險指數</p>
@@ -339,7 +339,7 @@ const guidePages = [
     </div>
     <h3 className="text-sm font-bold text-slate-700 pt-2">三種使用方式</h3>
     <div className="space-y-2 text-xs text-slate-600">
-      <p><b>情境一｜第一次用，想全面了解狗狗</b><br/>首頁 → 行為評估問卷 → 100 題 → 結果報告 → ABC 分析 → 訓練對策 → 35 個訓練技術 → 開始執行 → 每天追蹤</p>
+      <p><b>情境一｜第一次用，想全面了解狗狗</b><br/>首頁 → 行為評估問卷 → 105 題 → 結果報告 → ABC 分析 → 訓練對策 → 35 個訓練技術 → 開始執行 → 每天追蹤</p>
       <p><b>情境二｜已經知道狗狗有亂尿問題</b><br/>首頁 → 排泄問題 → ABC 分析 → 訓練對策 → 訓練技術 → 開始執行 → 進度追蹤</p>
       <p><b>情境三｜想先學方法</b><br/>首頁 → 35 個訓練技術 → 找到想學的方法 → 閱讀詳細說明 → 回首頁 → 選擇行為 → ABC 分析</p>
     </div>
@@ -352,7 +352,7 @@ const guidePages = [
         <p className="text-xs text-slate-600 mt-1">完全免費，不用註冊帳號。資料存在自己的手機或電腦裡。</p>
       </div>
       <div className="bg-white rounded-xl border border-slate-200 p-3">
-        <p className="font-bold text-slate-700 text-sm">2｜100 題一定要一次填完嗎？</p>
+        <p className="font-bold text-slate-700 text-sm">2｜105 題一定要一次填完嗎？</p>
         <p className="text-xs text-slate-600 mt-1">不用！可以分 2～3 次完成，系統會自動保存進度。</p>
       </div>
       <div className="bg-white rounded-xl border border-slate-200 p-3">
@@ -581,7 +581,7 @@ export default function HomePage() {
           <div className="flex-1">
             <h2 className="font-black text-lg">行為評估問卷</h2>
             <p className="text-sm text-white/80 mt-0.5">
-              100題專業評估，7大類別，自動識別需要關注的行為問題
+              105題專業評估，7大類別，自動識別需要關注的行為問題
             </p>
           </div>
           <ArrowRight

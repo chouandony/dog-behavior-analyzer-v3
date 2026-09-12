@@ -98,7 +98,13 @@ export default function QuestionnairePage() {
 
   const current = sections[currentSection];
   const totalSections = sections.length;
-  const progress = Math.round((Object.keys(answers).length / 100) * 100);
+  // 動態計算總題數與已答題數（實際為 105 題：第 92 題本體 + 921~925 五個小題）
+  const TOTAL_QUESTIONS = sections.reduce((sum, s) => sum + s.questions.length, 0);
+  const answeredCount = sections.reduce(
+    (sum, s) => sum + s.questions.filter((q) => answers[q.id] !== undefined).length,
+    0
+  );
+  const progress = Math.min(100, Math.round((answeredCount / TOTAL_QUESTIONS) * 100));
 
   const handleSelect = useCallback((qid: number, value: number) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
@@ -234,7 +240,7 @@ export default function QuestionnairePage() {
               狗狗行為評估問卷
             </h1>
             <p className="text-sm text-slate-500 mt-1 leading-relaxed">
-              100題專業評估，涵蓋7大類別，幫助您全面了解狗狗的行為特徵。
+              {TOTAL_QUESTIONS}題專業評估，涵蓋{totalSections}大類別，幫助您全面了解狗狗的行為特徵。
             </p>
           </div>
         </div>
@@ -251,7 +257,7 @@ export default function QuestionnairePage() {
             />
           </div>
           <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-            <span>{Object.keys(answers).length} / 100 題</span>
+            <span>{answeredCount} / {TOTAL_QUESTIONS} 題</span>
             <span>第 {currentSection + 1} / {totalSections} 部分</span>
           </div>
         </div>
