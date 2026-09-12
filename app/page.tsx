@@ -82,16 +82,16 @@ const guidePages = [
     <h3 className="text-lg font-black text-slate-800">🏠 首頁｜你的狗狗行為分析起點</h3>
     <div className="bg-white rounded-xl border-2 border-slate-200 p-4 space-y-3">
       <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-        <span className="text-xl">🐕</span>
+        <span className="text-xl">🐶</span>
         <span className="font-bold text-slate-700">狗狗行為分析</span>
       </div>
-      <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
-        <p className="text-sm font-bold text-orange-700">📋 行為評估問卷</p>
-        <p className="text-xs text-slate-600 mt-1">100 題專業評估，涵蓋 7 大類別。<br/>適合：「我根本不知道狗狗到底是哪裡有問題。」</p>
+      <div className="bg-warm-50 rounded-lg p-3 border border-warm-200">
+        <p className="text-sm font-bold text-warm-700">📋 行為評估問卷</p>
+        <p className="text-xs text-slate-600 mt-1">100 題專業評估，涵蓋 7 大行為類別。<br/>適合：「我不知道狗狗到底有什麼問題。」</p>
       </div>
       <div className="bg-slate-50 rounded-lg p-3">
-        <p className="text-sm font-bold text-slate-700">🐕 問題行為卡片</p>
-        <p className="text-xs text-slate-600 mt-1">攻擊性 / 破壞性 / 恐懼與焦慮 / 吠叫問題 / 分離焦慮 / 興奮過動<br/>選一個 → 按「開始 ABC 分析」</p>
+        <p className="text-sm font-bold text-slate-700">🐶 問題行為卡片（共 10 項）</p>
+        <p className="text-xs text-slate-600 mt-1">攻擊性行為 / 破壞性行為 / 恐懼與焦慮 / 分離相關問題 / 過度興奮與衝動<br/>過度吠叫 / 排泄問題 / 依戀與尋求關注 / 訓練與服從性 / 雜項行為問題<br/>選一個 → 按「開始 ABC 分析」</p>
       </div>
       <div className="grid grid-cols-2 gap-2 text-xs">
         <div className="bg-blue-50 rounded-lg p-2 text-center"><p className="font-bold text-blue-700">📚 35 個訓練技術</p></div>
@@ -99,26 +99,26 @@ const guidePages = [
       </div>
     </div>
     <div className="bg-yellow-50 rounded-xl border border-yellow-200 p-3">
-      <p className="text-xs text-yellow-700">💡 小提示：如果尚未選擇行為，「開始 ABC 分析」會顯示灰色「請先選擇一個行為」。點擊後會自動捲到行為卡片區提醒你。</p>
+      <p className="text-xs text-yellow-700">💡 小提示：如果尚未選擇行為，底部「開始 ABC 分析」按鈕會顯示灰色「請先選擇一個行為」，點擊後會自動捲回行為卡片區提醒你選擇。</p>
     </div>
   </div>,
   <div key="4" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📊 行為評估｜先全面了解你的狗</h3>
     <p className="text-sm text-slate-600 leading-relaxed">本行為評估問卷基於學術研究框架設計，涵蓋 7 大類行為維度，幫助您全面了解狗狗的行為特徵。</p>
     <p className="text-xs text-slate-500">這是一套參考學術研究框架編寫的行為評估問卷，改編為一般飼主也能在家完成的互動式問卷。</p>
-    <div className="bg-gradient-to-br from-orange-50 to-emerald-50 rounded-xl border-2 border-orange-200 p-4">
-      <p className="text-sm font-bold text-slate-700 mb-3">📋 7 大類別一覽</p>
-      <div className="space-y-2 text-xs">
-        <div className="flex items-start gap-2"><span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-bold shrink-0">8題</span><span className="text-slate-700"><b>訓練和服從性</b> — 學習指令的能力與服從程度</span></div>
-        <div className="flex items-start gap-2"><span className="bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold shrink-0">27題</span><span className="text-slate-700"><b>攻擊性</b> — 對人、狗及陌生人的攻擊傾向</span></div>
-        <div className="flex items-start gap-2"><span className="bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-bold shrink-0">18題</span><span className="text-slate-700"><b>恐懼和焦慮</b> — 面對不同情境時的害怕程度</span></div>
-        <div className="flex items-start gap-2"><span className="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded font-bold shrink-0">8題</span><span className="text-slate-700"><b>與分離有關的行為</b> — 主人離開時的反應</span></div>
-        <div className="flex items-start gap-2"><span className="bg-pink-100 text-pink-700 px-2 py-0.5 rounded font-bold shrink-0">6題</span><span className="text-slate-700"><b>興奮性</b> — 容易興奮的程度</span></div>
-        <div className="flex items-start gap-2"><span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold shrink-0">6題</span><span className="text-slate-700"><b>依戀和尋求關注</b> — 對主人的依賴與討抱頻率</span></div>
-        <div className="flex items-start gap-2"><span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold shrink-0">27題</span><span className="text-slate-700"><b>雜項行為問題</b> — 過度吠叫、亂吃東西、追車等</span></div>
+    <div className="bg-gradient-to-br from-warm-50 to-emerald-50 rounded-xl border-2 border-warm-200 p-4">
+      <p className="text-sm font-bold text-slate-700 mb-3">📋 7 大類一覽</p>
+      <div className="grid grid-cols-1 gap-y-1.5 text-xs">
+        <p className="text-slate-700"><b>1.</b> 訓練和服從性（8題）</p>
+        <p className="text-slate-700"><b>2.</b> 攻擊性（27題）</p>
+        <p className="text-slate-700"><b>3.</b> 恐懼和焦慮（18題）</p>
+        <p className="text-slate-700"><b>4.</b> 與分離有關的行為（8題）</p>
+        <p className="text-slate-700"><b>5.</b> 興奮性（6題）</p>
+        <p className="text-slate-700"><b>6.</b> 依戀和尋求關注（6題）</p>
+        <p className="text-slate-700"><b>7.</b> 雜項行為問題（27題）</p>
       </div>
     </div>
-    <p className="text-xs text-slate-500 text-center">總共 <span className="font-bold text-orange-600">100 題</span>，預估時間約 <span className="font-bold text-orange-600">10～15 分鐘</span></p>
+    <p className="text-xs text-slate-500 text-center">總共 <span className="font-bold text-warm-600">100 題</span>，預估時間約 <span className="font-bold text-warm-600">10～15 分鐘</span></p>
   </div>,
   <div key="5" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📝 行為評估問卷怎麼填？</h3>
@@ -217,7 +217,7 @@ const guidePages = [
     <h3 className="text-lg font-black text-slate-800">🎯 ABC 分析只要 5 步驟</h3>
     <div className="space-y-3">
       <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">1</div>
+        <div className="w-8 h-8 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold shrink-0">1</div>
         <div>
           <p className="text-sm font-bold text-slate-700">選擇行為</p>
           <p className="text-xs text-slate-500">從列表中選一個你想了解的問題行為（單選）</p>
@@ -227,14 +227,14 @@ const guidePages = [
         <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold shrink-0">2</div>
         <div>
           <p className="text-sm font-bold text-slate-700">選擇前事 A</p>
-          <p className="text-xs text-slate-500">選擇觸發行為的情境：陌生人靠近、門鈴、其他狗出現、準備出門等</p>
+          <p className="text-xs text-slate-500">選擇觸發行為的情境：門鈴、陌生人出現、準備出門、其他狗靠近等</p>
         </div>
       </div>
       <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold shrink-0">3</div>
+        <div className="w-8 h-8 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold shrink-0">3</div>
         <div>
           <p className="text-sm font-bold text-slate-700">選擇行為 B</p>
-          <p className="text-xs text-slate-500">選擇狗狗具體做了什麼：吠叫、低吼、爆衝、亂尿、啃咬家具等</p>
+          <p className="text-xs text-slate-500">選擇狗狗具體做了什麼：吠叫、低吼、亂尿、啃咬家具、過度舔毛等</p>
         </div>
       </div>
       <div className="flex items-start gap-3">
@@ -253,85 +253,85 @@ const guidePages = [
       </div>
     </div>
     <div className="bg-yellow-50 rounded-xl border border-yellow-200 p-3">
-      <p className="text-xs text-yellow-700">💡 可以分析的行為：攻擊性、破壞性、恐懼與焦慮、過度吠叫、分離焦慮、過度興奮、過度尋求關注、排泄問題。如果有很多問題，建議一個一個來。</p>
+      <p className="text-xs text-yellow-700">💡 可以分析的行為（10 項）：攻擊性行為、破壞性行為、恐懼與焦慮、分離相關問題、過度興奮與衝動、過度吠叫、排泄問題、依戀與尋求關注、訓練與服從性、雜項行為問題。ABC 一次只能選一個，讓分析更精準。</p>
     </div>
   </div>,
   <div key="9" className="space-y-4">
-    <h3 className="text-lg font-black text-slate-800">📋 訓練對策｜知道原因後，接下來怎麼做？</h3>
-    <p className="text-sm text-slate-600">完成 ABC 分析後，系統會根據你的選擇提供具體建議，分成三個階段：</p>
+    <h3 className="text-lg font-black text-slate-800">📋 訓練對策｜知道原因之後，接下來怎麼做？</h3>
+    <p className="text-sm text-slate-600">ABC 完成後，系統會依照你的分析結果提供對策，分成三個階段：</p>
     <div className="space-y-3">
       <div className="bg-red-50 rounded-xl border-2 border-red-200 p-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded">必要</span>
           <span className="text-sm font-bold text-red-700">🔴 安全管理</span>
         </div>
-        <p className="text-xs text-slate-600">👉 立刻做。例如陌生訪客來時先讓狗狗待在安全區域、出門使用牽繩、避免直接面對壓力源。</p>
-        <p className="text-xs text-slate-500 mt-1">推薦技術：安全區訓練、脫敏與反制約</p>
+        <p className="text-xs text-slate-600">👉 現在就做。例如亂尿問題：先排除醫療問題、檢查排泄區域數量、設在安靜易達處、遠離食水碗。</p>
+        <p className="text-xs text-slate-500 mt-1">推薦技術：環境豐富化、去墊子／安定訓練</p>
       </div>
       <div className="bg-orange-50 rounded-xl border-2 border-orange-200 p-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded">建議</span>
           <span className="text-sm font-bold text-orange-700">🟠 核心訓練</span>
         </div>
-        <p className="text-xs text-slate-600">👉 接下來幾週持續進行。例如教「坐下」取代攻擊行為、用正增強建立好習慣。</p>
-        <p className="text-xs text-slate-500 mt-1">推薦技術：替代行為訓練、目標訓練</p>
+        <p className="text-xs text-slate-600">👉 接下來幾週執行。建立替代行為與正向強化：狗狗在正確位置排泄 → 立即給予高價值獎勵 → 讓牠逐漸建立正確習慣。</p>
+        <p className="text-xs text-slate-500 mt-1">推薦技術：DRA 替代行為增強、系統減敏感與反制約</p>
       </div>
       <div className="bg-emerald-50 rounded-xl border-2 border-emerald-200 p-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="bg-emerald-500 text-white text-xs font-bold px-2 py-0.5 rounded">選用</span>
           <span className="text-sm font-bold text-emerald-700">🟢 日常管理</span>
         </div>
-        <p className="text-xs text-slate-600">👉 長期維持。建立規律的運動、心智刺激、遊戲時間表，讓狗狗有適當活動。</p>
+        <p className="text-xs text-slate-600">👉 長期維持。建立規律餵食與清理時間、維持穩定環境、持續觀察變化。</p>
       </div>
     </div>
     <p className="text-xs text-slate-500 text-center">點推薦技術標籤會跳到「35 個訓練技術」的詳細說明</p>
   </div>,
   <div key="10" className="space-y-4">
     <h3 className="text-lg font-black text-slate-800">📚 35 個訓練技術｜不要只知道「要訓練」</h3>
-    <p className="text-sm text-slate-600">系統收錄 35 種專業訓練與行為矯正方法，分為六大類別：</p>
+    <p className="text-sm text-slate-600">系統收錄 35 種狗狗訓練與行為矯正專業技術，分為五大類別：</p>
     <div className="grid grid-cols-3 gap-2 text-xs text-center">
-      <div className="bg-blue-50 rounded-lg p-2 border border-blue-200"><p className="font-bold text-blue-700">基礎服從</p></div>
-      <div className="bg-red-50 rounded-lg p-2 border border-red-200"><p className="font-bold text-red-700">行為矯正</p></div>
-      <div className="bg-emerald-50 rounded-lg p-2 border border-emerald-200"><p className="font-bold text-emerald-700">環境管理</p></div>
-      <div className="bg-purple-50 rounded-lg p-2 border border-purple-200"><p className="font-bold text-purple-700">脫敏</p></div>
-      <div className="bg-yellow-50 rounded-lg p-2 border border-yellow-200"><p className="font-bold text-yellow-700">社交化</p></div>
-      <div className="bg-orange-50 rounded-lg p-2 border border-orange-200"><p className="font-bold text-orange-700">進階技巧</p></div>
+      <div className="bg-emerald-50 rounded-lg p-2 border border-emerald-200"><p className="font-bold text-emerald-700">基礎訓練</p></div>
+      <div className="bg-orange-50 rounded-lg p-2 border border-orange-200"><p className="font-bold text-orange-700">行為改造</p></div>
+      <div className="bg-blue-50 rounded-lg p-2 border border-blue-200"><p className="font-bold text-blue-700">情緒調節</p></div>
+      <div className="bg-red-50 rounded-lg p-2 border border-red-200"><p className="font-bold text-red-700">安全管理</p></div>
+      <div className="bg-purple-50 rounded-lg p-2 border border-purple-200"><p className="font-bold text-purple-700">進階應用</p></div>
     </div>
     <div className="bg-white rounded-xl border border-slate-200 p-3">
-      <p className="text-sm font-bold text-slate-700 mb-1">每個技術都有：</p>
+      <p className="text-sm font-bold text-slate-700 mb-1">每個技術都包含：</p>
       <div className="flex flex-wrap gap-2 text-xs">
-        <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">💡 核心概念</span>
-        <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full">📝 操作步驟</span>
-        <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full">⚠️ 常見錯誤</span>
-        <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">🐶 適用情境</span>
+        <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">📖 用途說明</span>
+        <span className="bg-green-100 text-green-700 px-2 py-1 rounded-full">🎯 適用情境</span>
+        <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">🔧 操作方法</span>
+        <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full">💡 提醒</span>
+        <span className="bg-amber-100 text-amber-700 px-2 py-1 rounded-full">📋 範例</span>
       </div>
     </div>
     <div className="border-t-2 border-slate-100 pt-4">
       <h3 className="text-lg font-black text-slate-800">📉 進度追蹤｜不要只靠「我覺得好像有改善」</h3>
-      <p className="text-sm text-slate-600">行為矯正通常不是今天訓練明天就好。所以系統提供進度追蹤，記錄：</p>
+      <p className="text-sm text-slate-600">行為矯正不是一天兩天的事情。系統提供進度追蹤，記錄：</p>
       <div className="grid grid-cols-3 gap-2 text-center mt-2">
         <div className="bg-blue-50 rounded-lg p-2"><p className="text-lg font-bold text-blue-600">📊</p><p className="text-xs text-slate-600">總次數</p></div>
         <div className="bg-red-50 rounded-lg p-2"><p className="text-lg font-bold text-red-600">💥</p><p className="text-xs text-slate-600">平均強度</p></div>
         <div className="bg-emerald-50 rounded-lg p-2"><p className="text-lg font-bold text-emerald-600">⏱️</p><p className="text-xs text-slate-600">恢復時間</p></div>
       </div>
-      <p className="text-xs text-slate-500 mt-2">次數下降、強度下降、恢復時間縮短 = 方法可能有效！建議每天固定時間記錄，持續 2～4 週。</p>
+      <p className="text-xs text-slate-500 mt-2">次數下降、強度下降、恢復時間縮短 = 方法可能有效！建議每天固定時間記錄（例如睡前），持續 2～4 週。</p>
     </div>
   </div>,
   <div key="11" className="space-y-4">
-    <h3 className="text-lg font-black text-slate-800">🧠 九大成因分析｜事情沒有那麼簡單？</h3>
-    <p className="text-sm text-slate-600">有時做完 ABC，你還是會想「好像還有什麼地方不對。」這時候可以進一步檢查九大成因。</p>
+    <h3 className="text-lg font-black text-slate-800">🧠 九大成因分析｜如果問題沒有那麼簡單？</h3>
+    <p className="text-sm text-slate-600">有時做完 ABC，你還是會覺得「好像還有什麼地方不對。」這時候可以進一步使用九大成因分析。</p>
     <div className="bg-white rounded-xl border-2 border-slate-200 p-4">
       <p className="text-sm font-bold text-slate-700 mb-2">狗狗行為的九大成因</p>
       <div className="grid grid-cols-1 gap-1 text-xs text-slate-600">
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">1</span><span>基因與品種傾向</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">2</span><span>早期經驗（0～16 週齡社會化期）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">3</span><span>學習史（過去發生過什麼）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">4</span><span>健康與生理狀態</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">5</span><span>環境與資源（空間、運動量）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">6</span><span>社交關係（與人、與其他狗）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">7</span><span>資源競爭（食物、玩具、睡覺處）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">8</span><span>壓力源（搬家、新成員、噪音）</span></div>
-        <div className="flex items-center gap-2"><span className="bg-slate-100 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0">9</span><span>認知與老化（老年犬認知退化）</span></div>
+        <div className="flex items-center gap-2"><span>🏥</span><span>1. 醫療與疼痛</span></div>
+        <div className="flex items-center gap-2"><span>👶</span><span>2. 發展與早期經驗</span></div>
+        <div className="flex items-center gap-2"><span>🧬</span><span>3. 品種與個體氣質</span></div>
+        <div className="flex items-center gap-2"><span>💓</span><span>4. 情緒與生理喚起</span></div>
+        <div className="flex items-center gap-2"><span>📚</span><span>5. 學習歷史</span></div>
+        <div className="flex items-center gap-2"><span>🌍</span><span>6. 環境前事</span></div>
+        <div className="flex items-center gap-2"><span>💧</span><span>7. 需求未被滿足</span></div>
+        <div className="flex items-center gap-2"><span>👨‍👩‍👧</span><span>8. 飼主與家庭互動</span></div>
+        <div className="flex items-center gap-2"><span>📊</span><span>9. 壓力堆疊</span></div>
       </div>
     </div>
     <div className="bg-purple-50 rounded-xl border border-purple-200 p-3">
@@ -339,9 +339,9 @@ const guidePages = [
     </div>
     <h3 className="text-sm font-bold text-slate-700 pt-2">三種使用方式</h3>
     <div className="space-y-2 text-xs text-slate-600">
-      <p><b>情境一｜第一次用，想全面了解</b><br/>首頁 → 行為評估問卷 → 100 題 → 結果報告 → ABC 分析 → 訓練對策 → 執行 → 進度追蹤</p>
-      <p><b>情境二｜已經知道有攻擊問題</b><br/>首頁 → 選攻擊性行為 → ABC 分析 → 訓練對策 → 執行 → 進度追蹤</p>
-      <p><b>情境三｜想先學方法</b><br/>首頁 → 35 個訓練技術 → 瀏覽方法 → 選行為 → ABC 分析</p>
+      <p><b>情境一｜第一次用，想全面了解狗狗</b><br/>首頁 → 行為評估問卷 → 100 題 → 結果報告 → ABC 分析 → 訓練對策 → 35 個訓練技術 → 開始執行 → 每天追蹤</p>
+      <p><b>情境二｜已經知道狗狗有亂尿問題</b><br/>首頁 → 排泄問題 → ABC 分析 → 訓練對策 → 訓練技術 → 開始執行 → 進度追蹤</p>
+      <p><b>情境三｜想先學方法</b><br/>首頁 → 35 個訓練技術 → 找到想學的方法 → 閱讀詳細說明 → 回首頁 → 選擇行為 → ABC 分析</p>
     </div>
   </div>,
   <div key="12" className="space-y-4">
@@ -554,7 +554,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-1.5 text-xs text-slate-600">
             <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center">
-              <span className="text-[10px] font-bold text-orange-600">8</span>
+              <span className="text-[10px] font-bold text-orange-600">10</span>
             </div>
             <span>行為維度</span>
           </div>
