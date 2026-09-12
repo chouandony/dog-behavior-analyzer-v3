@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, BookOpen } from 'lucide-react'
+import { ChevronDown, BookOpen, Target, Wrench } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Technique } from '@/data/techniques'
 
@@ -17,8 +17,19 @@ const categoryColors: Record<string, string> = {
   '進階應用': 'bg-purple-50 text-purple-600 border-purple-200',
 }
 
+// 分類對應的主色（圖示、編號用）
+const categoryAccent: Record<string, string> = {
+  '基礎訓練': 'text-forest-600',
+  '行為改造': 'text-warm-600',
+  '情緒調節': 'text-blue-600',
+  '安全管理': 'text-red-600',
+  '進階應用': 'text-purple-600',
+}
+
 export default function TechniqueCard({ technique }: Props) {
   const [expanded, setExpanded] = useState(false)
+  const accent = categoryAccent[technique.category] || 'text-warm-500'
+  const chip = categoryColors[technique.category] || 'bg-cream text-earth-500 border-earth-200'
 
   return (
     <div className="bg-white rounded-xl border border-earth-200 overflow-hidden hover:shadow-sm transition-shadow">
@@ -32,7 +43,7 @@ export default function TechniqueCard({ technique }: Props) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="font-bold text-earth-500">{technique.name}</h3>
-            <span className={cn('text-xs px-2 py-0.5 rounded-full border', categoryColors[technique.category])}>
+            <span className={cn('text-xs px-2 py-0.5 rounded-full border', chip)}>
               {technique.category}
             </span>
           </div>
@@ -46,20 +57,23 @@ export default function TechniqueCard({ technique }: Props) {
 
       {expanded && (
         <div className="px-4 pb-4 border-t border-earth-100">
-          <div className="pt-3 space-y-3">
+          <div className="pt-3 space-y-4">
             <div>
               <h4 className="text-sm font-bold text-earth-500 flex items-center gap-1.5 mb-1">
-                <BookOpen size={14} className="text-warm-500" />
+                <BookOpen size={14} className={accent} />
                 用途
               </h4>
               <p className="text-sm text-earth-500 leading-relaxed">{technique.purpose}</p>
             </div>
 
             <div>
-              <h4 className="text-sm font-bold text-earth-500 mb-1">適用情境</h4>
+              <h4 className="text-sm font-bold text-earth-500 flex items-center gap-1.5 mb-1.5">
+                <Target size={14} className={accent} />
+                適用情境
+              </h4>
               <div className="flex flex-wrap gap-1.5">
                 {technique.applicable.map((item) => (
-                  <span key={item} className="text-xs px-2 py-1 rounded-md bg-cream text-earth-500 border border-earth-200">
+                  <span key={item} className={cn('text-xs px-2 py-1 rounded-md border', chip)}>
                     {item}
                   </span>
                 ))}
@@ -67,7 +81,10 @@ export default function TechniqueCard({ technique }: Props) {
             </div>
 
             <div>
-              <h4 className="text-sm font-bold text-earth-500 mb-1">操作方法</h4>
+              <h4 className="text-sm font-bold text-earth-500 flex items-center gap-1.5 mb-1">
+                <Wrench size={14} className={accent} />
+                操作方法
+              </h4>
               <p className="text-sm text-earth-500 leading-relaxed">{technique.method}</p>
             </div>
 
@@ -77,13 +94,13 @@ export default function TechniqueCard({ technique }: Props) {
             </div>
 
             {technique.examples && technique.examples.length > 0 && (
-              <div>
-                <h4 className="text-sm font-bold text-earth-500 mb-1">範例</h4>
-                <ul className="space-y-1.5">
+              <div className="bg-cream rounded-lg p-3 border border-earth-200">
+                <h4 className="text-sm font-bold text-earth-500 mb-2">📖 範例</h4>
+                <ul className="space-y-2">
                   {technique.examples.map((ex, i) => (
                     <li key={i} className="text-sm text-earth-500 flex items-start gap-2">
-                      <span className="text-warm-500 shrink-0">•</span>
-                      {ex}
+                      <span className={cn('shrink-0 font-bold', accent)}>{i + 1}.</span>
+                      <span className="leading-relaxed">{ex}</span>
                     </li>
                   ))}
                 </ul>
